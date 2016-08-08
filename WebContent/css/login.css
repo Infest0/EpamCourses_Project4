@@ -1,0 +1,88 @@
+@CHARSET "UTF-8";
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+	font: 16pt Arial, Helvetica, sans-serif;
+	background-color: #eee;
+}
+
+.formdiv {
+	border: thin solid;
+	position: absolute;
+	top: 10%;
+	bottom: 10%; left : 0;
+	right: 0;
+	margin: auto;
+	left: 0; right : 0; margin : auto;
+	width: 30%;
+	height:45%;
+	border-radius: 10px;
+	background-color: white;
+}
+
+.formhead {
+	width: 100%;
+	height: 40px;
+	background-color: #e50000;
+	text-align: center;
+	font-size: 16pt;
+	overflow:hidden;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	padding-top: 5px;
+	overflow:hidden;
+}
+
+.form {
+	margin: 20px auto;
+}
+
+.formline {
+	width: 100%;
+	font-size: 12pt;
+	margin-top: 10px;
+	display: block;
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+.formline input[type="submit"] {
+	width: 40%;
+	height: 30px;
+	background-color:  #e50000;
+	border: none;
+	font-family: Arial;
+	font-size: 14pt;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+
+.formline input[type="submit"]:hover {
+	background-color: #8B0000;
+}
+
+.headtext {
+	font-family: "Arial Black", sans-serif;
+	padding-top: 10px;
+}
+
+.inputinfo {
+	text-align: center;
+	width: 150px;
+	height: 40px
+	margin-left: 5px;
+}
+
+.fieldname {
+	margin-right: 5px;
+}
+
+.langpicker {
+	margin: 0 auto;
+	width: 100px;
+	text-align: center;
+}

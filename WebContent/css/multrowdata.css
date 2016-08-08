@@ -1,0 +1,48 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+	background-color: #eee;
+	font: 18pt Arial, Helvetica, sans-serif;
+}
+
+.infoBlock {
+	width: 50%;
+	margin: 20px auto 0;
+	border: thin solid;
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+.rowitem {
+	text-align: center;
+	width: 100%;
+	display: block;
+}
+
+.rowbtn {
+	border: none;
+	background-color: #e50000;
+	text-align: center;
+	color: white;
+	font-family: "Arial Bold";
+	font-size: 11pt;
+	display: block;
+	width: 100%;
+}
+
+.rowbtn:hover {
+	background-color: #8B0000!;
+}
+
+.rowitem:nth-child(odd) {
+	background-color: white;
+}
+
+.rowitem:nth-child(even) {
+	background-color: #f0f6e6;
+	border-top: none;
+}

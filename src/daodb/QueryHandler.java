@@ -1,0 +1,157 @@
+package daodb;
+
+import static daodb.DbNameHandler.*;
+
+public interface QueryHandler {
+	/**
+	 * Procedure constraint rule DB
+	 */
+	String FIND_CONSTRAINT_BY_SPECIALITY = "SELECT " + MEDIC_TYPE_TABLE + "." + MEDIC_TYPE_NAME + " , "
+			+ PROCEDURE_TYPE_TABLE + "." + PROCEDURE_TYPE_NAME + " AS ? " + " FROM " + RULE_TYPE_TABLE + " JOIN "
+			+ PROCEDURE_TYPE_TABLE + " ON " + PROCEDURE_TYPE_TABLE + "." + PROCEDURE_TYPE_ID + " = " + RULE_TYPE_TABLE
+			+ "." + RULE_PROCEDURE_ID + " JOIN " + MEDIC_TYPE_TABLE + " ON " + RULE_TYPE_TABLE + "." + RULE_MEDIC_ID
+			+ " = " + MEDIC_TYPE_TABLE + "." + MEDIC_ID_TYPE + " WHERE " + MEDIC_TYPE_TABLE + "." + MEDIC_TYPE_NAME
+			+ " = ? ";
+	
+	/**
+	 * Admin DB
+	 */
+	String FIND_ALL_ADMINS = "SELECT * FROM "+ ADMIN_TABLE;
+	String FIND_ADMIN_BY_ID = FIND_ALL_ADMINS + " WHERE " + ADMIN_ID + " = ? ";
+	
+	/**
+	 * Procedure DB
+	 */
+	String FIND_PROC_BY_PATIENT_ID = "SELECT * FROM " + PROCEDURE_TABLE + " WHERE " + PROCEDURE_HISTORY + " = ? ";
+
+	/**
+	 * Patient history DB
+	 */
+	
+	/**
+	 * INSERT INTO `hospital`.`patient_history` 
+	 * 	(`id_pat_hist`, `complaints`, `date_added`) VALUES ('4', 'asd', '2016-04-04');
+
+	 */
+	
+	String FIND_PATHIST_ALL = "SELECT * FROM " + PATIENT_HISTORY_TABLE;
+	
+	String ADD_PATHIST = "INSERT INTO " + PATIENT_HISTORY_TABLE + " (" + PATIENT_HISTORY_PAT_ID + ", " + PATIENT_HISTORY_COMPLAINTS + ", "
+			+ PATIENT_HISTORY_DATE_ADDED +") VALUES ( ? , ? , ? ); ";
+	
+	String FIND_PATHIST_BY_PATIENT_ID = FIND_PATHIST_ALL + " WHERE " + PATIENT_HISTORY_PAT_ID + " = ? ";
+
+	String FIND_PATHIST_BY_ID = FIND_PATHIST_ALL + " WHERE " + PATIENT_HISTORY_ID + " = ? ";
+
+	String FIND_PATHIST_BY_MEDIC_ID = FIND_PATHIST_ALL + " WHERE " + PATIENT_HISTORY_ID + " IN ( SELECT "
+			+ MEDIC_HISTORIES_TABLE + "." + MEDIC_HISTORIES_HISTORY_ID + " FROM " + MEDIC_HISTORIES_TABLE + " WHERE "
+			+ MEDIC_HISTORIES_MEDIC_ID + " = ? ) ";
+	
+	String FIND_PATHIST_NOT_DISCHANGED = FIND_PATHIST_ALL + " WHERE " + PATIENT_HISTORY_DATE_DISCHANGED + " IS NULL";
+
+	String UPDATE_PATHIST = "UPDATE " + PATIENT_HISTORY_TABLE + " SET " + PATIENT_HISTORY_ID + " = ' ? ' , "
+			+ PATIENT_HISTORY_PAT_ID + " = ' ? ' , " + PATIENT_HISTORY_COMPLAINTS + " = ' ? ' , "
+			+ PATIENT_HISTORY_DATE_ADDED + " = ' ? ' , " + PATIENT_HISTORY_DATE_DISCHANGED + " = ' ? ' " + " WHERE "
+			+ PATIENT_HISTORY_ID + " = ' ? ' ";
+
+	String DISCHARGE_PATIENT = "DELETE FROM " + MEDIC_HISTORIES_TABLE + " WHERE " + MEDIC_HISTORIES_MEDIC_ID
+			+ " = ? AND " + MEDIC_HISTORIES_HISTORY_ID + " = ? ";
+
+	// DELETE FROM `hospital`.`medic_histories` WHERE `id`='2';
+
+	/**
+	 * Person DB
+	 */
+	String FIND_PERSON_BY_ID = "SELECT * FROM " + PERSON_TABLE + " WHERE " + PERSON_ID + " = ? ";
+	String FIND_PERSON_ALL = "SELECT * FROM " + PERSON_TABLE;
+
+	/**
+	 * User DB
+	 */
+	String FIND_USER_BY_NAME = "SELECT * FROM " + LOG_TABLE + " WHERE " + LOG_USERNAME + " = ? ";
+	String FIND_USER_BY_ID = "SELECT * FROM " + LOG_TABLE + " WHERE " + LOG_PERSON_ID + " = ? ";
+	String FIND_USER_ALL = "SELECT * FROM " + LOG_TABLE;
+
+	/**
+	 * Medic DB
+	 */
+	  String FIND_MEDIC_ALL = "SELECT " + PERSON_TABLE + "." + PERSON_ID + ", " + PERSON_TABLE + "." + PERSON_FNAME + ", "
+			+ PERSON_TABLE + "." + PERSON_LNAME + ", " + PERSON_TABLE + "." + PERSON_ADDRESS + ", " + MEDIC_TYPE_TABLE
+			+ "." + MEDIC_TYPE_NAME + ", " + MEDIC_TABLE + "." + MEDIC_TYPE_ID + " FROM " + MEDIC_TABLE + " JOIN "
+			+ PERSON_TABLE + " ON " + MEDIC_TABLE + "." + MEDIC_PERSON_ID + " = " + PERSON_TABLE + "." + PERSON_ID
+			+ " JOIN " + MEDIC_TYPE_TABLE + " ON " + MEDIC_TABLE + "." + MEDIC_TYPE_ID + " = " + MEDIC_TYPE_TABLE + "."
+			+ MEDIC_ID_TYPE;
+
+	String FIND_MEDIC_BY_ID = FIND_MEDIC_ALL + " WHERE " + MEDIC_TABLE + "." + MEDIC_PERSON_ID + " = ? ";
+	
+	String FIND_ALL_BY_PATIENT_ID = FIND_MEDIC_ALL + " WHERE " + MEDIC_TABLE + "." + MEDIC_PERSON_ID + " IN " + " ( SELECT " + 
+			MEDIC_HISTORIES_TABLE + "." + MEDIC_HISTORIES_MEDIC_ID + " FROM " + MEDIC_HISTORIES_TABLE +
+				" WHERE " + MEDIC_HISTORIES_TABLE + "." + MEDIC_HISTORIES_HISTORY_ID  + " = ? );"; 
+	
+	String FIND_ALL_BY_NOT_PATIENT_ID = FIND_MEDIC_ALL + " WHERE " + MEDIC_TABLE + "." + MEDIC_PERSON_ID + " NOT IN " + " ( SELECT " + 
+			MEDIC_HISTORIES_TABLE + "." + MEDIC_HISTORIES_MEDIC_ID + " FROM " + MEDIC_HISTORIES_TABLE +
+				" WHERE " + MEDIC_HISTORIES_TABLE + "." + MEDIC_HISTORIES_HISTORY_ID  + " = ? );";
+	
+	String ADD_MEDIC_TO_PATHIST = "INSERT INTO " + MEDIC_HISTORIES_TABLE + " ("+MEDIC_HISTORIES_MEDIC_ID + ", "+MEDIC_HISTORIES_HISTORY_ID+") VALUES ( ?, ?); ";
+	
+	
+	/**
+	 * INSERT INTO `hospital`.`medic_histories` (`medic_id`, `history_id`) VALUES ('3', '3');
+
+	 */
+	
+	/**
+	 * Patient DB
+	 */
+
+	String FIND_PATIENTS_ALL = "SELECT " + PERSON_TABLE + "." + PERSON_FNAME + ", " + PERSON_TABLE + "." + PERSON_LNAME
+			+ ", " + PERSON_TABLE + "." + PERSON_ADDRESS + ", " + PATIENT_TABLE + "." + PATIENTS_ID + " FROM "
+			+ PATIENT_TABLE + " JOIN " + PERSON_TABLE + " ON " + PERSON_TABLE + "." + PERSON_ID + " = " + PATIENT_TABLE
+			+ "." + PATIENTS_ID;
+
+	String FIND_PATIENT_BY_ID = FIND_PATIENTS_ALL + " WHERE " + PATIENTS_ID + " = ? ";
+	
+	String FIND_FREE_PATIENTS = FIND_PATIENTS_ALL + " WHERE " + PATIENT_TABLE + "." + PATIENTS_ID + " NOT IN ( SELECT " +
+			PATIENT_HISTORY_TABLE + "." + PATIENT_HISTORY_PAT_ID + " FROM " + PATIENT_HISTORY_TABLE + " WHERE " + 
+			PATIENT_HISTORY_TABLE + "." + PATIENT_HISTORY_DATE_DISCHANGED + " IS NOT NULL )";
+			
+	/**
+	 * SELECT * FROM hospital.patients WHERE patients.id NOT IN (SELECT patient_history.id_pat_hist from patient_history 
+	where patient_history.date_dischanged IS NOT NULL )
+	 */
+	
+	/**
+	 * Patient history note DB
+	 */
+	String FIND_PATHISTNOTE_ALL = "SELECT * FROM " + HISTORY_NOTES_TABLE;
+
+	String FIND_PATHISTNOTE_BY_ID = FIND_PATHISTNOTE_ALL + " WHERE " + HISTORY_NOTES_ID + " =  ? ";
+
+	String FIND_PATHISTNOTE_BY_PATID = FIND_PATHISTNOTE_ALL + " WHERE " + HISTORY_NOTES_PAT_ID + " =  ? ";
+	
+	String CREATE_PATHISTNOTE = "INSERT INTO " + HISTORY_NOTES_TABLE + "(" + HISTORY_NOTES_THEME + ", "
+			+ HISTORY_NOTES_DATE + ", " + HISTORY_NOTES_TEXT + ", " + HISTORY_NOTES_PAT_ID + ") VALUES (?, ?, ?, ?); ";
+
+	/**
+	 * Procedure DB
+	 */
+	String FIND_PROCEDURE_ALL = "SELECT " + PROCEDURE_TABLE + ".*, " + PROCEDURE_TYPE_TABLE + "." + PROCEDURE_TYPE_NAME
+			+ " FROM " + PROCEDURE_TABLE + " JOIN " + PROCEDURE_TYPE_TABLE + " ON " + PROCEDURE_TABLE + "."
+			+ PROCEDURE_ID_TYPE + " = " + PROCEDURE_TYPE_TABLE + "." + PROCEDURE_TYPE_ID;
+
+	String FIND_PROCEDURE_BY_ID = FIND_PROCEDURE_ALL + " WHERE " + PROCEDURE_ID + " = ? ";
+
+	String FIND_PROCEDURE_BY_PATID = FIND_PROCEDURE_ALL + " WHERE " + PROCEDURE_HISTORY + " = ?";
+
+	String CREATE_PROCEDURE = "INSERT INTO " + PROCEDURE_TABLE + " (" + PROCEDURE_ID_TYPE + ", " + PROCEDURE_HISTORY
+			+ ", " + PROCEDURE_ASSIGNED_MEDIC + ", " + PROCEDURE_DATE_ASSIGNED + ", " + PROCEDURE_DETAILS
+			+ ") VALUES (?, ?, ?, ?, ?)";
+
+	String UPDATE_PROCEDURE = "UPDATE " + PROCEDURE_TABLE + " SET " + PROCEDURE_TYPE_ID + " = ? ," + PROCEDURE_HISTORY
+			+ " = ? ," + PROCEDURE_ASSIGNED_MEDIC + " = ? ," + PROCEDURE_EXECUTED_MEDIC + " = ? ,"
+			+ PROCEDURE_DATE_EXECUTED + " = ? ," + PROCEDURE_DATE_ASSIGNED + " = ? ," + PROCEDURE_DETAILS
+			+ " = ? WHERE " + PROCEDURE_ID + " = ? ";
+
+	String FIND_PROCTYPE_ID_BY_NAME = "SELECT * FROM " + PROCEDURE_TYPE_TABLE + " WHERE " + PROCEDURE_TYPE_NAME
+			+ " = ? ";
+}
