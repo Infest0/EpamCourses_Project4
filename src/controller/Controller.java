@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(CONTROLLER_ANNOTATION)
+
 /**
  * Main Controller in system, takes requests from ajax and returns repsonse in
  * out writer

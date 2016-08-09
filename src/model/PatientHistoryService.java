@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 import dao.DaoFactory;
 import dao.PatientHistoryDao;
@@ -37,10 +39,10 @@ public class PatientHistoryService {
 
 		return histories;
 	}
-	
+
 	public List<PatientHistory> findNotDischanged() {
 		List<PatientHistory> histories = DaoFactory.getFactory().createPatientHistoryDao().findNotDischanged();
-		
+
 		if (histories != null) {
 			for (PatientHistory patientHistory : histories) {
 				patientHistory.setPatient(new PatientService().find(patientHistory.getPatientId()));
@@ -56,15 +58,21 @@ public class PatientHistoryService {
 		PatientHistoryDao patientHistoryDao = daoFactory.createPatientHistoryDao();
 		patientHistoryDao.update(patientHistory);
 	}
-	
+
 	public void addMedicToHistory(int medicId, int historyId) {
 		DaoFactory.getFactory().createPatientHistoryDao().addMedicToHistory(medicId, historyId);
+	}
+	
+	public void dischangeByAdmin(int historyId) {
+		PatientHistoryDao patientHistoryDaoDB = DaoFactory.getFactory().createPatientHistoryDao();
+		PatientHistory patientHistory = patientHistoryDaoDB.find(historyId);
+		patientHistory.setDateDischanged(new Date(Calendar.getInstance().getTime().getTime()));
+		patientHistoryDaoDB.update(patientHistory);
 	}
 
 	private void setPatientHistoryData(PatientHistory patientHistory) {
 		patientHistory
 				.setPatientHistoryNotes(new PatientHistoryNoteService().findAllByPatientId(patientHistory.getId()));
-		patientHistory
-				.setAssignedProcedures(new ProceduresService().findAllByPatientHistoryId(patientHistory.getId()));
+		patientHistory.setAssignedProcedures(new ProceduresService().findAllByPatientHistoryId(patientHistory.getId()));
 	}
 }

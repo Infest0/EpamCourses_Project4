@@ -20,6 +20,16 @@ import enteties.PatientHistory;
  */
 public class PatientHistoryDaoDB implements PatientHistoryDao {
 	public void create(PatientHistory patientHistory) {
+		try (Connection cn = DaoFactoryDB.getConnection()) {
+			PreparedStatement sql = cn.prepareStatement(CREATE_PATHIST);
+			sql.setInt(1, patientHistory.getPatientId());
+			sql.setString(2, patientHistory.getComplaints());
+			sql.setDate(3, patientHistory.getDateAdded());
+			sql.executeUpdate();
+			cn.close();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public boolean update(PatientHistory e) {

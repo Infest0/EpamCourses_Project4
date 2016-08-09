@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import enteties.PatientHistory;
 import model.PatientHistoryService;
 
+/**
+ * Encapsulates showing info about active patients in system
+ * @author Nick
+ *
+ */
 public class ShowNotDischangedPatientHistories implements ITask {
 
 	public String execute(HttpServletRequest request, HttpServletResponse response)

@@ -68,7 +68,7 @@
 						<td>${proc.id}</td>
 						<td><fmt:message key="text.${proc.type}" /></td>
 						<td>${proc.dateAssigned}</td>
-						<td>${proc.assignedMedic.sname}${proc.assignedMedic.fname}</td>
+						<td>${proc.assignedMedic.sname} ${proc.assignedMedic.fname}</td>
 						<td>${proc.details}</td>
 						<c:if
 							test="${role.contains('EXECUTE_APPOINTMENT') && requestScope[cons.ADD_PROCEDURE_PROCEDURES].contains(proc.type)}">
@@ -102,8 +102,8 @@
 						<td><fmt:message key="text.${proc.type}" /></td>
 						<td>${proc.dateAssigned}</td>
 						<td>${proc.dateExecuted}</td>
-						<td>${proc.assignedMedic.sname}${proc.assignedMedic.fname}</td>
-						<td>${proc.executedMedic.sname}${proc.executedMedic.fname}</td>
+						<td>${proc.assignedMedic.sname} ${proc.assignedMedic.fname}</td>
+						<td>${proc.executedMedic.sname} ${proc.executedMedic.fname}</td>
 						<td>${proc.details}</td>
 					</tr>
 				</c:if>

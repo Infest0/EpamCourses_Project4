@@ -20,6 +20,6 @@ public interface PatientHistoryDao extends GenericDao<PatientHistory> {
 	public void dischangeByMedic(int medicId, int historyId);
 
 	void addMedicToHistory(int medicId, int historyId);
-	
+
 	void addPatientHistory(int patientId, String complaints, Date dateAdded);
 }

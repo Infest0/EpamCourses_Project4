@@ -5,16 +5,12 @@ import static controller.ControllerParamHandler.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.Calendar;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
-import dao.DaoFactory;
-import enteties.PatientHistory;
 import enteties.Procedure;
 import enteties.User;
-import model.PatientHistoryService;
 import model.ProceduresService;
 
 /**
@@ -40,20 +36,8 @@ public class SubmitOperation implements ITask {
 		service.addNewProcedure(procedure);
 		request.setAttribute(ADD_RESULT_MSG, ADD_RESULT_KEY);
 		
+		logger.info(String.format(HISTORY_MESSAGE_ADDED, Integer.valueOf(request.getParameter(HIST_ID))));
 		
-		int idUser = Integer.valueOf(request.getParameter(HIST_ID));
-		PatientHistory patientHistory = new PatientHistoryService().find(idUser);
-		request.setAttribute(MY_HISTORY_NOTES, patientHistory);
-		request.setAttribute(HIST_ID, idUser);
-
-		int userId = ((User) request.getSession().getAttribute(SESSION_USER)).getId();
-		String specialityType = DaoFactory.getFactory().createMedicDao().find(userId).getSpeciality();
-		List<String> rules = DaoFactory.getFactory().createRulesDaoDB().getConstraints(specialityType);
-
-		request.setAttribute(ADD_PROCEDURE_PROCEDURES, rules);
-		
-		logger.info(HISTORY_MESSAGE_ADDED + Integer.valueOf(request.getParameter(HIST_ID)));
-
-		return EDIT_HISTORY_PATH;
+		return new EditCurrentHistoryTask().execute(request, response);
 	}
 }

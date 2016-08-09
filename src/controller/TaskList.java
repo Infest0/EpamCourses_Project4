@@ -14,13 +14,14 @@ public enum TaskList {
 	SUBMIT_HISTORY_NOTE(new SubmitHistoryNoteTask()),
 	ADD_PROCEDURE(new AddProcedureTask()),
 	SUBMIT_PROCEDURE(new SubmitOperation()),
-	OUT_PACIENT(new OutPatientTask()),
+	OUT_PACIENT(new OutPatientByMedicTask()),
 	EXECUTE_PROCEDURE(new ExecuteProcedure()),
 	SHOW_NOT_DISCHNAGED(new ShowNotDischangedPatientHistories()),
 	MANAGE_HISTORY(new ManageCurrentHistory()),
 	ADD_MEDIC_TO_HISTORY(new AddMedicToHistoryTask()),
 	ADD_PATIENT_HISTORY(new AddPatientHistoryTask()),
-	SUBMIT_PATIENT_HISTORY(new SubmitPatientHistoryTask());
+	SUBMIT_PATIENT_HISTORY(new SubmitPatientHistoryTask()),
+	OUT_PATIENT_BY_ADMIN(new OutPatientByAdminTask());
 
 	TaskList(ITask task) {
 		this.task = task;

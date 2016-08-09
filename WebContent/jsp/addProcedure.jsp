@@ -43,10 +43,9 @@
 			<fmt:message key="text.addprocedure.description" />
 		</span>
 		
-		<TEXTAREA class="text" id="${cons.ADD_PROCEDURE_DETAIL}" ROWS="5"></TEXTAREA>
+		<TEXTAREA class="text" id="${cons.ADD_PROCEDURE_DETAIL}" ROWS="5"> </TEXTAREA>
 
-		<c:set var="ajaxQuery"
-			value="AjaxGet('${cons.JS_REQ}', ${cons.JS_FUNC},  '${cons.ADD_PROCEDURE_REQ}',  '${cons.ADD_PROCEDURE_SELECTED}', 
+		<c:set var="ajaxQuery" value="AjaxGet('${cons.JS_REQ}', ${cons.JS_FUNC},  '${cons.ADD_PROCEDURE_REQ}',  '${cons.ADD_PROCEDURE_SELECTED}', 
 			'${cons.HIST_ID}', '${cons.ADD_PROCEDURE_DETAIL}')" />
 
 		<button class="submit" onclick="${ajaxQuery}">
@@ -54,7 +53,6 @@
 		</button>
 	</div>
 
-	<input type="hidden" id="${cons.HIST_ID}"
-		value="${requestScope[cons.HIST_ID]}" />
+	<input type="hidden" id="${cons.HIST_ID}" value="${requestScope[cons.HIST_ID]}" />
 </body>
 </html>

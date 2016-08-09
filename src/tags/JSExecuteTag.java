@@ -60,7 +60,6 @@ public class JSExecuteTag extends TagSupport {
 		this.additionalParams = additionalParams;
 	}
 
-	@Override
 	public int doStartTag() throws JspException {
 		StringBuilder builder = new StringBuilder();
 		builder.append(jsMain + "(" + addScopes(javaHandler) + ", " + jsExecute + ", " + addScopes(command));
@@ -76,18 +75,15 @@ public class JSExecuteTag extends TagSupport {
 		try {
 			pageContext.getOut().write("<a href = '#' onclick = \"" + builder.toString() + "\"" + ">");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return EVAL_BODY_INCLUDE;
 	}
 
-	@Override
 	public int doEndTag() throws JspException {
 		try {
 			pageContext.getOut().write("</a>");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

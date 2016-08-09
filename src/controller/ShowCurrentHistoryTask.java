@@ -11,6 +11,7 @@ import model.PatientHistoryService;
 
 /**
  * Encapsulates showing current history  function in system
+
  * @author Nick
  *
  */

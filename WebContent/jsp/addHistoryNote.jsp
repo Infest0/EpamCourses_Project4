@@ -21,14 +21,14 @@
 </head>
 <body>
 	<div id="inputForm">
-		<input type="hidden" id="${cons.HIST_ID}"
-			value="${requestScope[cons.HIST_ID]}" /> <span class="headerTheme">
+		<input type="hidden" id="${cons.HIST_ID}" value="${requestScope[cons.HIST_ID]}" /> 
+		<span class="headerTheme">
 			<fmt:message key="text.addnewnote.theme" />
-		</span> <input type="text" id="${cons.ADD_HISTORY_THEME}" /> <span
-			class="headerTheme"><fmt:message key="text.addnewnote.text" /></span>
+		</span> 
+		<input type="text" id="${cons.ADD_HISTORY_THEME}" />
+		<span class="headerTheme"><fmt:message key="text.addnewnote.text" /></span>
 		<TEXTAREA id="${cons.ADD_HISTORY_TEXT}" ROWS="5"></TEXTAREA>
-		<c:set var="ajaxQuery"
-			value="AjaxGet('${cons.JS_REQ}', ${cons.JS_FUNC}, '${cons.ADD_HISTORY_NOTE_REQ}',  
+		<c:set var="ajaxQuery" value="AjaxGet('${cons.JS_REQ}', ${cons.JS_FUNC}, '${cons.ADD_HISTORY_NOTE_REQ}',  
 			'${cons.HIST_ID}', '${cons.ADD_HISTORY_THEME}', '${cons.ADD_HISTORY_TEXT}')" />
 		<button class="submit" onclick="${ajaxQuery}">
 			<fmt:message key="text.addnewnote.add" />

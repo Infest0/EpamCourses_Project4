@@ -1,0 +1,50 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+	background-color: #eee;
+	font: 18pt Arial, Helvetica, sans-serif;
+}
+
+.maindiv {
+	width: 80%;
+	margin: 20px auto 0;
+	text-align: center;
+}
+
+.complaints { 
+	width: 60%;
+	margin 20px auto;
+}
+
+.headname {
+	display: block;
+	font-size: 16pt;
+	margin : 5px auto;
+}
+
+.patchooser {
+	margin: 20px auto;
+	width: 100px;
+}
+
+.addpatient {
+	margin: 20px auto 15px;
+	border-radius: 5px;
+	background-color: #e50000;
+	text-align: center;
+	color: white;
+	height: 30px;
+	border: none;
+	width: 120px;
+	font-family: "Arial Bold";
+	font-size: 11pt;
+	display:block;
+}
+
+.addpatient:hover {
+	background-color: #8B0000;
+}

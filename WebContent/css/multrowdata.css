@@ -10,17 +10,78 @@ html, body {
 }
 
 .infoBlock {
-	width: 50%;
+	width: 90%;
 	margin: 20px auto 0;
 	border: thin solid;
-	border-radius: 15px;
 	overflow: hidden;
+}
+
+.tabledata {
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.tritem {
+	
+}
+
+.tditem {
+	text-align: center;
+	border: thin solid;
+}
+
+.tddata2col {
+	width: 50%;
+}
+
+.tddata1col {
+	width: 100%;
+}
+
+.tddata4col {
+	width: 25%;
 }
 
 .rowitem {
 	text-align: center;
 	width: 100%;
 	display: block;
+}
+
+.tritem:nth-child(odd) {
+	background-color: white;
+}
+
+.tritem:nth-child(even) {
+	background-color: #f0f6e6;
+}
+
+.singlebtn {
+	border: none;
+	background-color: #e50000;
+	color: white;
+	text-align: center;
+	font-family: "Arial Bold";
+	font-size: 11pt;
+	width: 80%;
+	margin: 20px auto;
+	width: 120px;
+	border-radius: 10px;
+}
+
+.centerbtn {
+	border: none;
+	background-color: #e50000;
+	color: white;
+	text-align: center;
+	font-family: "Arial Bold";
+	font-size: 11pt;
+	display: block;
+	width: 80%;
+	margin: 20px auto;
+	width: 120px;
+	border-radius: 10px;
 }
 
 .rowbtn {
@@ -35,6 +96,14 @@ html, body {
 }
 
 .rowbtn:hover {
+	background-color: #8B0000!;
+}
+
+.centerbtn:hover {
+	background-color: #8B0000!;
+}
+
+.singlebtn:hover {
 	background-color: #8B0000!;
 }
 

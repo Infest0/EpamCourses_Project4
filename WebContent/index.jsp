@@ -60,7 +60,7 @@
 						<li>
 							<js:jslink jsMain="AjaxGet" jsExecute="${cons.JS_FUNC}"
 								javaHandler="${cons.JS_REQ}" command="${cons.SHOW_NOT_DISCHANGED}">
-								<fmt:message key="text.index.histories" />
+								<fmt:message key="text.index.managehistories" />
 							</js:jslink>
 						</li>
 					</c:if>

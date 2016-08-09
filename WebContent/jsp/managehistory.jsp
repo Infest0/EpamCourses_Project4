@@ -18,39 +18,60 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title><fmt:message key="text.managinghistory.title" /></title>
+
+<link href="${contextPath}/css/result.css" rel="stylesheet"
+	type="text/css" />
+
+
+<link href="${contextPath}/css/managehistory.css" rel="stylesheet"
+	type="text/css" />
+	
+
+<link href="${contextPath}/css/multrowdata.css" rel="stylesheet"
+	type="text/css" />
+
 </head>
 <body>
 	<c:set var="addMedic"
 		value="AjaxGet('${cons.JS_REQ}', ${cons.JS_FUNC}, '${cons.ADD_MEDIC_TO_HISTORY}', '${cons.SELECTED_MEDIC}', '${cons.HIST_ID}')" />
-
-	<table>
-		<c:forEach var="medic" items="${medics}">
-			<tr>
-				<td>NAME</td>
-				<td>${medic.fname}</td>
-				<td>FNAME</td>
-				<td>${medic.sname}</td>
-			</tr>
-		</c:forEach>
-	</table>
-
-	<div>
-		<select id="${cons.SELECTED_MEDIC}">
-			<c:forEach var="availableMedic" items="${availableMedics}">
-				<option value="${availableMedic.id}">
-					${availableMedic.fname} ${availableMedic.sname}
-				</option>
+		
+	<c:set var="ajaxQueryOut"
+		value="AjaxGet('${cons.JS_REQ}', ${cons.JS_FUNC}, '${cons.OUT_PATIENT_BY_ADMIN}', '${cons.HIST_ID}')" />
+	
+	<div class="maindiv">
+		<table class="tabledata">
+			<c:forEach var="medic" items="${medics}">
+				<tr class="tritem">
+					<td class="tditem tddata2col"><fmt:message key="text.managinghistory.drname" /></td>
+					<td class="tditem tddata2col">${medic.fname} ${medic.sname}</td>
+				</tr>
 			</c:forEach>
-		</select>
+		</table>
 
-		<button class="button left" onclick="${addMedic}">Add Medic</button>
+		<div>
+			<c:choose>
+				<c:when test="${not empty availableMedics}">
+					<span class="headname">Choose patient to add</span>
+					<select id="${cons.SELECTED_MEDIC}">
+						<c:forEach var="availableMedic" items="${availableMedics}">
+							<option value="${availableMedic.id}">
+								${availableMedic.fname} ${availableMedic.sname}
+							</option>
+						</c:forEach>
+					</select>
+		
+					<button  onclick="${addMedic}" class="singlebtn">Add Medic</button>
+				</c:when>
+				<c:otherwise>
+					<h1><fmt:message key="text.managinghistory.nodoctors" /></h1>
+				</c:otherwise>
+			</c:choose>
+	
+			<button onclick = "${ajaxQueryOut}" class="centerbtn"><fmt:message key="text.managinghistory.dischange" /></button>
+		</div>
 
-		<%-- 		<button class="button right" onclick="${ajaxQueryOut}">Dischange</button> --%>
-
-	</div>
-
-	<input type="hidden" id="${cons.HIST_ID}"
-		value="${requestScope[cons.HIST_ID]}" />
+	 <input type="hidden" id="${cons.HIST_ID}" value="${requestScope[cons.HIST_ID]}" />
+    </div>
 </body>
 </html>

@@ -31,12 +31,17 @@ public class ControllerParamHandler {
 	public final static String COMPLAINTS = "patient_omplaints";
 	public final static String SUBMIT_PATHIST = "SUBMIT_PATIENT_HISTORY";
 	public final static String SELECTED_PATIENT = "selectedPatient";
+	public final static String OUT_PATIENT_BY_ADMIN = "OUT_PATIENT_BY_ADMIN";
+
+	public String getOUT_PATIENT_BY_ADMIN() {
+		return OUT_PATIENT_BY_ADMIN;
+	}
 
 	public String getSELECTED_PATIENT() {
 		return SELECTED_PATIENT;
 	}
-	
-	public String getSUBMIT_PATHIST() {
+
+	 public String getSUBMIT_PATHIST() {
 		return SUBMIT_PATHIST;
 	}
 

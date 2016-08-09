@@ -3,18 +3,8 @@
 	margin: 0;
 }
 
-html, body {
-	height: 100%;
-	background-color: #eee;
-	font: 26pt Arial, Helvetica, sans-serif;
-}
-
 h1 {
 	color: red;
 	text-align: center;
 	margin-top: 100px;
-}
-
-.stackTrace {
-	font-size: 14pt;
 }

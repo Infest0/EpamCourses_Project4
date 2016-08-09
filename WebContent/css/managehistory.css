@@ -1,0 +1,16 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+	background-color: #eee;
+	font: 18pt Arial, Helvetica, sans-serif;
+}
+
+.maindiv {
+	width: 80%;
+	margin: 20px auto 0;
+	text-align: center;
+}

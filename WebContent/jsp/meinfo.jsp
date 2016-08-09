@@ -21,10 +21,40 @@
 </head>
 <body>
 	<div class="infoBlock">
-		<span class="rowitem"><fmt:message key="text.meinfo.personid" /> : ${person.id} </span>
-		<span class="rowitem"><fmt:message key="text.meinfo.fname" /> : ${person.fname}  </span>
-		<span class="rowitem"><fmt:message key="text.meinfo.sname" /> : ${person.sname} </span>
-		<span class="rowitem"><fmt:message key="text.meinfo.address" /> : ${person.address} </span>
+		<table class="tabledata">
+			<tr class="tritem">
+				<td class="tditem tddata2col">
+					<fmt:message key="text.meinfo.personid" />
+				</td>
+				<td class="tditem tddata2col">
+					${person.id}
+				</td>
+			</tr>
+			<tr class="tritem">
+				<td class="tditem tddata2col">
+					<fmt:message key="text.meinfo.fname" />
+				</td>
+				<td class="tditem tddata2col">
+					${person.fname}
+				</td>
+			</tr>
+			<tr class="tritem">
+				<td class="tditem tddata2col">
+					<fmt:message key="text.meinfo.sname" />
+				</td>
+				<td class="tditem tddata2col">
+					${person.sname}
+				</td>
+			</tr>
+			<tr class="tritem">
+				<td class="tditem tddata2col">
+					<fmt:message key="text.meinfo.address" />
+				</td>
+				<td class="tditem tddata2col">
+					${person.address}
+				</td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>

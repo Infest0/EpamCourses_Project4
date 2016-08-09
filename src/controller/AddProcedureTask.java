@@ -11,6 +11,7 @@ import enteties.User;
 
 /**
  * Encapsulates adding procedure function in system
+ * 
  * @author Nick
  *
  */
