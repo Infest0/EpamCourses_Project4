@@ -37,7 +37,7 @@ public class LoginService {
 	 * @param salt
 	 * @return generated hashcode
 	 */
-	private int hashCode(String password, String salt) {
+	public int hashCode(String password, String salt) {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
