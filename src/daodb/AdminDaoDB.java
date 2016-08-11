@@ -10,27 +10,27 @@ import java.util.List;
 import dao.AdminDao;
 import enteties.Admin;
 
+/**
+ * DAO for admin
+ * 
+ * @author Nick
+ *
+ */
 public class AdminDaoDB implements AdminDao{
 
-	@Override
 	public void create(Admin e) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public boolean update(Admin e) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+	
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public Admin find(int id) {
 		Admin admin = null;
 
@@ -53,9 +53,7 @@ public class AdminDaoDB implements AdminDao{
 		return admin;
 	}
 
-	@Override
 	public List<Admin> findAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

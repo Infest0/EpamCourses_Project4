@@ -8,16 +8,60 @@ import java.sql.Date;
  *
  */
 public class Procedure {
+	
+	/**
+	 * Id of procedure in database
+	 */
 	private int id;
+	
+	/**
+	 * String of representation of procedure type
+	 */
 	private String type;
+	
+	/**
+	 * Medic object that assigned this procedure
+	 */
 	private Medic assignedMedic;
+	
+	/**
+	 * Medic object that executed this procedure
+	 */
 	private Medic executedMedic;
+	
+	/**
+	 * Date, when the procedure was assigned
+	 */
 	private Date dateAssigned;
+	
+	/**
+	 * Date, when procedure was executed
+	 */
 	private Date dateExecuted;
+	
+	/**
+	 * Additional details about the procedure
+	 */
 	private String details;
+	
+	/**
+	 * Id of patient history which current procedure refers
+	 */
 	private int historyId;
+	
+	/**
+	 * Id of medic that assigned this procedure
+	 */
 	private int assignedMedicId;
+	
+	/**
+	 * Id of medic that executed this procedure
+	 */
 	private int executedMedicId;
+	
+	/**
+	 * Id of type procedure in database
+	 */
 	private int procedureTypeId;
 
 	public Procedure() {

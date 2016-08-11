@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import enteties.Medic;
 import model.MedicService;
 
+/**
+ * Encapsulates managing the patients function for admin in system
+ * 
+ * @author Nick
+ *
+ */
 public class ManageCurrentHistory implements ITask {
 
 	public String execute(HttpServletRequest request, HttpServletResponse response)

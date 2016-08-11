@@ -94,7 +94,6 @@ public class UserDaoDB implements UserDao {
 			PreparedStatement sql = cn.prepareStatement(FIND_USER_BY_NAME);
 			sql.setString(1, name);
 			ResultSet res = sql.executeQuery();
-			System.out.println(FIND_USER_BY_NAME);
 
 			if (res.next()) {
 				user = new User();

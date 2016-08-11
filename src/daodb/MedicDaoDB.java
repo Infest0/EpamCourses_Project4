@@ -18,6 +18,7 @@ import enteties.Medic;
  *
  */
 public class MedicDaoDB implements MedicDao {
+	
 	/**
 	 * Creating medics from app is not allowed
 	 */
@@ -78,6 +79,7 @@ public class MedicDaoDB implements MedicDao {
 		return medics;
 	}
 
+	
 	 public List<Medic> findAllByPatientHistoryId(int id) {
 		List<Medic> medics = null;
 
@@ -118,6 +120,18 @@ public class MedicDaoDB implements MedicDao {
 		}
 		return medics;
 
+	}
+	
+	public void outHistoriesById(int id) {
+		try (Connection cn = DaoFactoryDB.getConnection()) {
+			PreparedStatement sql = cn.prepareStatement(DROP_MEDIC_HISTORY_BY_PATHIST_ID);
+			sql.setInt(1, id);
+
+			sql.executeUpdate();
+			cn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void addAllToMedic(List<Medic> medics, ResultSet medicRes) throws SQLException {

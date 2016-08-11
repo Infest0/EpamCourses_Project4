@@ -7,9 +7,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.log4j.Logger;
-
 import enteties.Patient;
 import enteties.User;
 import model.PatientService;
@@ -31,7 +29,7 @@ public class AddPatientHistoryTask implements ITask {
 
 		request.setAttribute(HIST_ID, request.getParameter(HIST_ID));
 		
-		logger.info(String.format(PATIENT_HISTORY_ADDED, Integer.valueOf(request.getParameter(HIST_ID)), adminId));
+		logger.info(String.format(PATIENT_HISTORY_ADDED, request.getParameter(HIST_ID), adminId));
 
 		return ADD_PATHIST_PATH;
 	}

@@ -9,7 +9,11 @@ import java.util.Set;
  *
  */
 public class Role {
-	Set<AvailableFunctions> availableFunctions;
+	
+	/**
+	 * Set of available unique functions in system. 
+	 */
+	private Set<AvailableFunctions> availableFunctions;
 
 	public Role() {
 		availableFunctions = new HashSet<>();
@@ -33,6 +37,11 @@ public class Role {
 		}
 	}
 	
+	/**
+	 * Returns true if set contains rule
+	 * @param functionName String representation of role name
+	 * @return boolean value 
+	 */
 	public boolean contains(String functionName) {
 		return availableFunctions.contains(AvailableFunctions.valueOf(functionName));
 	}

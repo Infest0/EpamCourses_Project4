@@ -5,7 +5,7 @@ import java.util.List;
 import enteties.Patient;
 
 /**
- * Main dao interface for patient
+ * Interface for patient DAO
  * @author Nick
  *
  */

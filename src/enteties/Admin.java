@@ -3,15 +3,18 @@ package enteties;
 import java.sql.Date;
 
 /**
- * Class that encapsultes system administrator
+ * Class that encapsulates system administrator entity in hospital system
  * @author Nick
  *
  */
 public class Admin extends Person {
+	
+	/**
+	 * The date when person get the administrator rights
+	 */
 	private Date dateAssigned;
 	
-	public Admin() {
-	}
+	public Admin() { }
 
 	public Admin(Date dateAssigned) {
 		this.dateAssigned = dateAssigned;

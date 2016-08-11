@@ -12,6 +12,7 @@ import model.PatientHistoryNoteService;
 
 /**
  * Encapsulates submitting note function in system
+ * 
  * @author Nick
  *
  */
@@ -25,9 +26,9 @@ public class SubmitHistoryNoteTask implements ITask {
 
 		new PatientHistoryNoteService().addNewHistory(theme, request.getParameter(ADD_HISTORY_TEXT), historyId);
 		request.setAttribute(ADD_RESULT_MSG, ADD_NOTE_RESULT);
-		
+
 		logger.info(String.format(HISTORY_NOTE_ADDED, theme, historyId));
-		
+
 		return new EditCurrentHistoryTask().execute(request, response);
 	}
 }

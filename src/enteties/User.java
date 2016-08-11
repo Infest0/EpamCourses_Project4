@@ -5,9 +5,25 @@ package enteties;
  * @author Nick
  */
 public class User {
+	
+	/**
+	 * User id in database
+	 */
 	private int id;
+	
+	/**
+	 * Hash of user password in database
+	 */
 	private int password;
+	
+	/**
+	 * Username of user in system
+	 */
 	private String username;
+	
+	/**
+	 * Special salt for each user for more secure generating of password
+	 */
 	private String salt;
 
 	public User() {

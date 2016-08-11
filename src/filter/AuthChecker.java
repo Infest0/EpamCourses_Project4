@@ -18,6 +18,11 @@ import javax.servlet.http.HttpSession;
  *
  */
 public class AuthChecker implements Filter {
+	
+	/**
+	 * If session object or session attributes are null redirects 
+	 * on login page
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
 			throws IOException, ServletException {
 		
@@ -36,7 +41,7 @@ public class AuthChecker implements Filter {
 		}
 	}
 
-	public void init(FilterConfig arg0) throws ServletException {}
-	
-	public void destroy() {}
+	public void init(FilterConfig arg0) throws ServletException { }
+
+	public void destroy() { }
 }

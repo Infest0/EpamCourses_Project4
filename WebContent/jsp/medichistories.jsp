@@ -49,6 +49,14 @@
 							${history.patient.sname}
 						</td>
 					</tr>
+					<tr class="tritem">
+						<td class="tditem tddata2col">
+							<fmt:message key="text.medicstories.complaints" />
+						</td>
+						<td class="tditem tddata2col">
+							${history.complaints}
+						</td>
+					</tr>
 					<tr class="tritem" >
 						<td class="tditem tddata1col" colspan="2">
 							<button class="rowbtn" id="${history.id}" value="${history.id}"

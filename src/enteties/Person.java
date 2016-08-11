@@ -5,9 +5,25 @@ package enteties;
  * @author Infest0
  */
 public class Person {
+	
+	/**
+	 * Id of person id database
+	 */
 	private int id;
+	
+	/**
+	 * First name of person
+	 */
 	private String fname;
+	
+	/**
+	 * Second name of person
+	 */
 	private String sname;
+	
+	/**
+	 * Full address of person
+	 */
 	private String address;
 	
 	public Person() {

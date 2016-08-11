@@ -29,8 +29,8 @@ public class OutPatientTask implements ITask {
 
 		DaoFactoryDB.getFactory().createPatientHistoryDao().dischangeByMedic(medicId, historyId);
 
-		logger.info(OUT_PATIENT + historyId + OUT_PATIENT_BY + medicId);
-
+		logger.info(String.format(OUT_PATIENT, historyId, medicId));
+	
 		List<PatientHistory> patientHistories = new PatientHistoryService().findByMedicId(medicId);
 		request.getSession().setAttribute(HISTORIES_LIST, patientHistories);
 		return HISTORIES_PATH;

@@ -6,6 +6,10 @@ package enteties;
  *
  */
 public class Patient extends Person {
+	
+	/**
+	 * Current patient history
+	 */
 	private PatientHistory patientHistory;
 	
 	public Patient() {

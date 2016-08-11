@@ -128,7 +128,10 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 
 		return patientHistories;
 	}
-
+	
+	/**
+	 * 
+	 */
 	public List<PatientHistory> findNotDischanged() {
 		List<PatientHistory> patientHistories = null;
 

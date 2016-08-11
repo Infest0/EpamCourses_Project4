@@ -14,6 +14,9 @@ import javax.servlet.ServletResponse;
  *
  */
 public class EncodingFilter implements Filter {
+	/**
+	 * Sets UTF-8 Encoding in response
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain next)
 			throws IOException, ServletException {
 		response.setContentType("text/html; charset=UTF-8");

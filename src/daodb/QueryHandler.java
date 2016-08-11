@@ -59,8 +59,8 @@ public interface QueryHandler {
 
 	String DISCHARGE_PATIENT = "DELETE FROM " + MEDIC_HISTORIES_TABLE + " WHERE " + MEDIC_HISTORIES_MEDIC_ID
 			+ " = ? AND " + MEDIC_HISTORIES_HISTORY_ID + " = ? ";
-
-	// DELETE FROM `hospital`.`medic_histories` WHERE `id`='2';
+	
+	 String DROP_MEDIC_HISTORY_BY_PATHIST_ID = "DELETE FROM " + MEDIC_HISTORIES_TABLE + " WHERE "+ MEDIC_HISTORIES_HISTORY_ID + " =  ? ";
 
 	/**
 	 * Person DB

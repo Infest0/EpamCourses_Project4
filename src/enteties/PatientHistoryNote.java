@@ -8,10 +8,30 @@ import java.util.Date;
  *
  */
 public class PatientHistoryNote {
+	
+	/**
+	 * Id of note in database
+	 */
 	private int id;
+	
+	/**
+	 * Date of creation of history note
+	 */
 	private Date date;
+	
+	/**
+	 * Theme of history note
+	 */
 	private String theme;
+	
+	/**
+	 * Text of history note
+	 */
 	private String text;
+	
+	/**
+	 * Id of history of patient which current note refers to
+	 */
 	private int historyId;
 
 	public PatientHistoryNote() {

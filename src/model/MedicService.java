@@ -23,4 +23,8 @@ public class MedicService {
 	public List<Medic> findAllNotInPatientHistoryById(int id) {
 		return DaoFactory.getFactory().createMedicDao().findAllNotInPatientHistoryById(id);
 	}
+	
+	public void outHistoriesById(int id) {
+		DaoFactory.getFactory().createMedicDao().outHistoriesById(id);
+	}
 }

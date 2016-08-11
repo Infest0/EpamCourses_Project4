@@ -14,6 +14,7 @@ import java.util.List;
  *
  */
 public class ProcedureConstraintsDB {
+	
 	/**
 	 * Defines constraints by speciality
 	 * @param speciality

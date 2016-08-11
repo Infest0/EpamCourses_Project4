@@ -18,6 +18,7 @@ import enteties.Patient;
  *
  */
 public class PatientDaoDB implements PatientDao {
+	
 	/**
 	 * Creating patients from app is not allowed
 	 */
@@ -78,7 +79,7 @@ public class PatientDaoDB implements PatientDao {
 
 		return patients;
 	}
-
+	
 	public List<Patient> findFreePatients() {
 		List<Patient> patients = null;
 

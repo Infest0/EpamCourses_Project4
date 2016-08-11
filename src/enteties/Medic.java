@@ -4,12 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Encapsulates a medic
+ * Encapsulates a medic entity in hospital system
  * @author Nick
  *
  */
 public class Medic extends Person {
+	
+	/**
+	 * String representation of medic speciality
+	 */
 	private String speciality;
+	
+	/**
+	 * List of assigned to medic patient histories 
+	 */
 	private List<PatientHistory> patientHistories;
 	
 	public Medic() {

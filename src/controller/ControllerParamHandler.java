@@ -4,6 +4,7 @@ package controller;
  * Contains all params on controller layer
  */
 public class ControllerParamHandler {
+	
 	/**
 	 * Edit current history
 	 */

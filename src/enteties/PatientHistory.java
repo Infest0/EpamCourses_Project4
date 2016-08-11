@@ -9,14 +9,50 @@ import java.util.List;
  *
  */
 public class PatientHistory {
+	
+	/**
+	 * Id of patient history id database
+	 */
 	private int id;
+	
+	/**
+	 * Date, when patient history was added by admin
+	 */
 	private Date dateAdded;
-	private Date dateDischanged;
+	
+	/**
+	 * Date, when patient history was discharged
+	 */
+	private Date dateDischarged;
+	
+	/**
+	 * List of medics that were directed to current history
+	 */
 	private List<Medic> assignedMedics;
+	
+	/**
+	 * List of history notes that refer to current patient history
+	 */
 	private List<PatientHistoryNote> patientHistoryNotes;
+	
+	/**
+	 *  List of procedures that refer to current patient history
+	 */
 	private List<Procedure> assignedProcedures;
+	
+	/**
+	 * Initial complaints of patients
+	 */
 	private String complaints;
+	
+	/**
+	 * Object of patient which refers to current history
+	 */
 	private Patient patient;
+	
+	/**
+	 * Id of patient which refers to current history
+	 */
 	private int patientId;
 
 	public PatientHistory() {
@@ -28,7 +64,7 @@ public class PatientHistory {
 			Patient patient, int patientId) {
 		this.id = id;
 		this.dateAdded = dateAdded;
-		this.dateDischanged = dateDischanged;
+		this.dateDischarged = dateDischanged;
 		this.assignedMedics = assignedMedics;
 		this.patientHistoryNotes = patientHistoryNotes;
 		this.assignedProcedures = assignedProcedures;
@@ -54,11 +90,11 @@ public class PatientHistory {
 	}
 
 	public Date getDateDischanged() {
-		return dateDischanged;
+		return dateDischarged;
 	}
 
 	public void setDateDischanged(Date dateDischanged) {
-		this.dateDischanged = dateDischanged;
+		this.dateDischarged = dateDischanged;
 	}
 
 	public String getComplaints() {
