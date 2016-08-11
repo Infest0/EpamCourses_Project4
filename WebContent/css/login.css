@@ -1,4 +1,5 @@
 @CHARSET "UTF-8";
+
 * {
 	margin: 0;
 	padding: 0;
@@ -14,12 +15,15 @@ html, body {
 	border: thin solid;
 	position: absolute;
 	top: 10%;
-	bottom: 10%; left : 0;
+	bottom: 10%;
+	left: 0;
 	right: 0;
 	margin: auto;
-	left: 0; right : 0; margin : auto;
+	left: 0;
+	right: 0;
+	margin: auto;
 	width: 30%;
-	height:45%;
+	height: 45%;
 	border-radius: 10px;
 	background-color: white;
 }
@@ -30,21 +34,21 @@ html, body {
 	background-color: #e50000;
 	text-align: center;
 	font-size: 16pt;
-	overflow:hidden;
+	overflow: hidden;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	padding-top: 5px;
-	overflow:hidden;
+	overflow: hidden;
 }
 
 .form {
-	margin: 20px auto;
+	margin: 20px auto 5px;
 }
 
 .formline {
 	width: 100%;
 	font-size: 12pt;
-	margin-top: 10px;
+	margin-top: 5px;
 	display: block;
 	text-align: center;
 	padding-bottom: 5px;
@@ -53,7 +57,7 @@ html, body {
 .formline input[type="submit"] {
 	width: 40%;
 	height: 30px;
-	background-color:  #e50000;
+	background-color: #e50000;
 	border: none;
 	font-family: Arial;
 	font-size: 14pt;
@@ -72,17 +76,22 @@ html, body {
 
 .inputinfo {
 	text-align: center;
-	width: 150px;
-	height: 40px
-	margin-left: 5px;
+	width: 90%;
+	height: 20px;
+	margin: 0 auto;
 }
 
 .fieldname {
+	text-align: center;
 	margin-right: 5px;
 }
 
 .langpicker {
-	margin: 0 auto;
-	width: 200px;
+	margin: 0 auto 20px;
+	text-align: center;
+}
+
+#language {
+	width: 100px;
 	text-align: center;
 }
