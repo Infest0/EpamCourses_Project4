@@ -6,11 +6,11 @@ package enteties;
  *
  */
 public enum RoleFunctions {
-	PATIENT(new AvailableFunctions[] {
+	 PATIENT(new AvailableFunctions[] {
 			AvailableFunctions.SHOW_INFO_ABOUT_ME,
 			AvailableFunctions.SHOW_PATIENT_HISTORY }), 
-	MEDIC(  new AvailableFunctions[] { 
-			AvailableFunctions.SHOW_INFO_ABOUT_ME,
+	 MEDIC(  new AvailableFunctions[] { 
+	 		AvailableFunctions.SHOW_INFO_ABOUT_ME,
 			AvailableFunctions.SHOW_USER_HISTORIES, 
 			AvailableFunctions.EXECUTE_APPOINTMENT }),
 	ADMIN (  new AvailableFunctions[] { 

@@ -1,5 +1,7 @@
 package enteties;
 
+import java.util.List;
+
 /**
  * Encapsulates a patient
  * @author Nick
@@ -10,18 +12,22 @@ public class Patient extends Person {
 	/**
 	 * Current patient history
 	 */
-	private PatientHistory patientHistory;
+	private List<PatientHistory> patientHistories;
 	
 	public Patient() {
 		super();
 	}
 
-	public Patient(String fname, String sname, String address, int id, PatientHistory patientHistory) {
-		super(fname, sname, address, id);
-		this.patientHistory = patientHistory;
+	public Patient(List<PatientHistory> patientHistories) {
+		super();
+		this.patientHistories = patientHistories;
 	}
 
-	public PatientHistory getPatientHistory() {
-		return patientHistory;
+	public List<PatientHistory> getPatientHistories() {
+		return patientHistories;
+	}
+
+	public void setPatientHistories(List<PatientHistory> patientHistories) {
+		this.patientHistories = patientHistories;
 	}
 }
