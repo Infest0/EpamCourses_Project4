@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import org.apache.log4j.Logger;
 import dao.AdminDao;
 import enteties.Admin;
 
@@ -16,8 +17,9 @@ import enteties.Admin;
  * @author Nick
  *
  */
-public class AdminDaoDB implements AdminDao{
-
+public class AdminDaoDB implements AdminDao {
+	final static Logger logger = Logger.getLogger(AdminDao.class);
+	
 	/**
 	 * Creating admin is not allowed in current system
 	 */
@@ -57,6 +59,7 @@ public class AdminDaoDB implements AdminDao{
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
 			e.printStackTrace();
 		}
 

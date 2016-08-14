@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
 import dao.PatientHistoryDao;
 import enteties.PatientHistory;
 
@@ -18,6 +19,7 @@ import enteties.PatientHistory;
  *
  */
 public class PatientHistoryDaoDB implements PatientHistoryDao {
+	final static Logger logger = Logger.getLogger(PatientHistoryDao.class);
 
 	/**
 	 * Creates a new patient history in system
@@ -34,6 +36,7 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 			sql.executeUpdate();
 			cn.close();
 		} catch (SQLException ex) {
+			logger.error(ex.getMessage());
 			ex.printStackTrace();
 		}
 	}
@@ -52,6 +55,8 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 			cn.close();
 			return true;
 		} catch (SQLException ex) {
+			logger.error(ex.getMessage());
+
 			ex.printStackTrace();
 		}
 
@@ -83,6 +88,8 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
@@ -101,6 +108,8 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 			addAllToResult(res, patientHistories);
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
@@ -121,6 +130,8 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 			addAllToResult(res, patientHistories);
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
@@ -141,6 +152,8 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 			addAllToResult(res, patientHistories);
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
@@ -159,12 +172,14 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 			addAllToResult(res, patientHistories);
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
 		return patientHistories;
 	}
-	
+
 	/**
 	 * Discharges the medic from patient history medic list, by medic id
 	 */
@@ -178,10 +193,12 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Adds medic to patient history medic list
 	 */
@@ -193,6 +210,8 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 			statement.executeUpdate();
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 	}

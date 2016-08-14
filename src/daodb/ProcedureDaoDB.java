@@ -8,19 +8,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.Logger;
+
 import dao.ProcedureDao;
 import enteties.Procedure;
 
 /**
  * DAO for procedure
+ * 
  * @author Nick
  *
  */
 public class ProcedureDaoDB implements ProcedureDao {
+	final static Logger logger = Logger.getLogger(ProcedureDaoDB.class);
+
 	/**
 	 * Creates a procedure in database
-	 * @param Procedure  input procedure object,
-	 *  takes fields from current object
+	 * 
+	 * @param Procedure
+	 *            input procedure object, takes fields from current object
 	 */
 	public void create(Procedure e) {
 		try (Connection cn = DaoFactoryDB.getConnection()) {
@@ -34,24 +41,28 @@ public class ProcedureDaoDB implements ProcedureDao {
 
 			cn.close();
 		} catch (SQLException err) {
+			logger.error(err.getMessage());
+
 			err.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Updates a procedure in database
-	 * @param Procedure  input procedure object,
-	 *  takes fields from current object
+	 * 
+	 * @param Procedure
+	 *            input procedure object, takes fields from current object
 	 */
 	public boolean update(Procedure e) {
 		try (Connection cn = DaoFactoryDB.getConnection()) {
 			PreparedStatement statement = cn.prepareStatement(UPDATE_PROCEDURE);
 			UpdateProcedureSql(statement, e);
-			System.out.println(UPDATE_PROCEDURE);
 			statement.executeUpdate();
 			cn.close();
 			return true;
 		} catch (SQLException er) {
+			logger.error(er.getMessage());
+
 			er.printStackTrace();
 		}
 		return false;
@@ -63,7 +74,7 @@ public class ProcedureDaoDB implements ProcedureDao {
 	public boolean delete(int id) {
 		return false;
 	}
-	
+
 	/**
 	 * Finds a procedure by its id
 	 */
@@ -82,44 +93,42 @@ public class ProcedureDaoDB implements ProcedureDao {
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
 		return procedure;
 	}
-	
+
 	/**
 	 * Finds all procedures in system
 	 */
 	public List<Procedure> findAll() {
-		List<Procedure> patientHistoryNoteList = null;
+		List<Procedure> procedures = null;
 
 		try (Connection cn = DaoFactoryDB.getConnection()) {
 			ResultSet rs = cn.prepareStatement(FIND_PROCEDURE_ALL).executeQuery();
 
 			if (rs.next()) {
-				Procedure procedure = null;
-				patientHistoryNoteList = new ArrayList<>();
-				rs.previous();
-
-				while (rs.next()) {
-					procedure = new Procedure();
-					addProcedure(procedure, rs);
-					patientHistoryNoteList.add(procedure);
-				}
+				procedures = new ArrayList<>();
+				
+				addAllToProcedure(rs, procedures);
 			}
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
-		return patientHistoryNoteList;
+		return procedures;
 	}
-	
+
 	/**
 	 * Finds all procedures by patient id
 	 */
 	public List<Procedure> findAllByPatientId(int id) {
-		List<Procedure> patientHistoryNoteList = null;
+		List<Procedure> procedures = null;
 
 		try (Connection cn = DaoFactoryDB.getConnection()) {
 			PreparedStatement preparedStatement = cn.prepareStatement(FIND_PROCEDURE_BY_PATID);
@@ -127,23 +136,19 @@ public class ProcedureDaoDB implements ProcedureDao {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			if (rs.next()) {
-				Procedure procedure = null;
-				patientHistoryNoteList = new ArrayList<>();
-				rs.previous();
-
-				while (rs.next()) {
-					procedure = new Procedure();
-					addProcedure(procedure, rs);
-					patientHistoryNoteList.add(procedure);
-				}
+				procedures = new ArrayList<>();
+				
+				addAllToProcedure(rs, procedures);
 			}
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
-		return patientHistoryNoteList;
+		return procedures;
 	}
-	
+
 	/**
 	 * Get the procedure type by its name
 	 */
@@ -161,10 +166,22 @@ public class ProcedureDaoDB implements ProcedureDao {
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
 		return foundId;
+	}
+
+	private void addAllToProcedure(ResultSet res, List<Procedure> procedures) throws SQLException {
+		res.previous();
+
+		while (res.next()) {
+			Procedure procedure = new Procedure();
+			addProcedure(procedure, res);
+			procedures.add(procedure);
+		}
 	}
 
 	private void addProcedure(Procedure proc, ResultSet res) throws SQLException {

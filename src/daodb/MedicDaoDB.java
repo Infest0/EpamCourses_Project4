@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
 import dao.MedicDao;
 import enteties.Medic;
 
@@ -18,7 +19,8 @@ import enteties.Medic;
  *
  */
 public class MedicDaoDB implements MedicDao {
-	
+	final static Logger logger = Logger.getLogger(MedicDaoDB.class);
+
 	/**
 	 * Creating medics from app is not allowed
 	 */
@@ -57,6 +59,7 @@ public class MedicDaoDB implements MedicDao {
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -79,6 +82,7 @@ public class MedicDaoDB implements MedicDao {
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -103,6 +107,7 @@ public class MedicDaoDB implements MedicDao {
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
 			e.printStackTrace();
 		}
 		return medics;
@@ -128,6 +133,7 @@ public class MedicDaoDB implements MedicDao {
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
 			e.printStackTrace();
 		}
 		return medics;
@@ -145,6 +151,7 @@ public class MedicDaoDB implements MedicDao {
 			sql.executeUpdate();
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
 			e.printStackTrace();
 		}
 	}

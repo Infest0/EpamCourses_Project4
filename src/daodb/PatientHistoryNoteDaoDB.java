@@ -10,20 +10,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import org.apache.log4j.Logger;
 import dao.PatientHistoryNoteDao;
 import enteties.PatientHistoryNote;
 
 /**
  * DAO for patient history note
+ * 
  * @author Nick
  *
  */
 public class PatientHistoryNoteDaoDB implements PatientHistoryNoteDao {
-	
+	final static Logger logger = Logger.getLogger(PatientHistoryNoteDao.class);
+
 	/**
 	 * Creates a new patient history note
-	 *	@param PatientHistoryNote input patient history note object,
-	 *			 takes fields from current object
+	 * 
+	 * @param PatientHistoryNote
+	 *            input patient history note object, takes fields from current
+	 *            object
 	 */
 	public void create(PatientHistoryNote e) {
 		try (Connection cn = DaoFactoryDB.getConnection()) {
@@ -37,6 +42,8 @@ public class PatientHistoryNoteDaoDB implements PatientHistoryNoteDao {
 
 			cn.close();
 		} catch (SQLException err) {
+			logger.error(err.getMessage());
+
 			err.printStackTrace();
 		}
 	}
@@ -54,7 +61,7 @@ public class PatientHistoryNoteDaoDB implements PatientHistoryNoteDao {
 	public boolean delete(int id) {
 		return false;
 	}
-	
+
 	/**
 	 * Finds patient history note by its id
 	 */
@@ -68,18 +75,19 @@ public class PatientHistoryNoteDaoDB implements PatientHistoryNoteDao {
 
 			if (patientRes.next()) {
 				patientHistoryNote = new PatientHistoryNote();
-
 				addPatientNote(patientHistoryNote, patientRes);
 			}
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
 		return patientHistoryNote;
 	}
-	
+
 	/**
 	 * Finds all patient history notes in system
 	 */
@@ -91,21 +99,18 @@ public class PatientHistoryNoteDaoDB implements PatientHistoryNoteDao {
 
 			if (rs.next()) {
 				patientHistoryNoteList = new ArrayList<>();
-				rs.previous();
-
-				while (rs.next()) {
-					PatientHistoryNote patientHistoryNote = new PatientHistoryNote();
-					addPatientNote(patientHistoryNote, rs);
-					patientHistoryNoteList.add(patientHistoryNote);
-				}
+				addAllToProcedure(rs, patientHistoryNoteList);
 			}
+			
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
 		return patientHistoryNoteList;
 	}
-	
+
 	/**
 	 * Find patient history notes by patient id
 	 */
@@ -119,19 +124,26 @@ public class PatientHistoryNoteDaoDB implements PatientHistoryNoteDao {
 
 			if (rs.next()) {
 				patientHistoryNoteList = new ArrayList<>();
-				rs.previous();
-
-				while (rs.next()) {
-					PatientHistoryNote patientHistoryNote = new PatientHistoryNote();
-					addPatientNote(patientHistoryNote, rs);
-					patientHistoryNoteList.add(patientHistoryNote);
-				}
+				addAllToProcedure(rs, patientHistoryNoteList);
 			}
+			
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
 		return patientHistoryNoteList;
+	}
+
+	private void addAllToProcedure(ResultSet res, List<PatientHistoryNote> patientHistoryNotes) throws SQLException {
+		res.previous();
+
+		while (res.next()) {
+			PatientHistoryNote patientHistoryNote = new PatientHistoryNote();
+			addPatientNote(patientHistoryNote, res);
+			patientHistoryNotes.add(patientHistoryNote);
+		}
 	}
 
 	private void addPatientNote(PatientHistoryNote patientHistoryNote, ResultSet rs) throws SQLException {

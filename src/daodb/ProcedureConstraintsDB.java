@@ -8,13 +8,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 /**
  * DAO for procedure constraints
  * @author Nick
  *
  */
 public class ProcedureConstraintsDB {
-	
+	final static Logger logger = Logger.getLogger(ProcedureConstraintsDB.class);
+
 	/**
 	 * Defines constraints by speciality
 	 * @param speciality
@@ -42,6 +45,8 @@ public class ProcedureConstraintsDB {
 				}
 			}
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 

@@ -19,7 +19,7 @@ import model.PatientHistoryNoteService;
 public class SubmitHistoryNoteTask implements ITask {
 	final static Logger logger = Logger.getLogger(SubmitHistoryNoteTask.class);
 
-	public String execute(HttpServletRequest request, HttpServletResponse response)
+	 public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String theme = request.getParameter(ADD_HISTORY_THEME);
 		int historyId = Integer.valueOf(request.getParameter(HIST_ID));

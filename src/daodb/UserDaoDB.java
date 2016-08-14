@@ -8,15 +8,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
 import dao.UserDao;
 import enteties.User;
 
 /**
  * DAO for user
+ * 
  * @author Nick
  *
  */
 public class UserDaoDB implements UserDao {
+	final static Logger logger = Logger.getLogger(UserDao.class);
+
 	/**
 	 * Creating users from this module is not allowed due to protection measures
 	 */
@@ -36,7 +40,7 @@ public class UserDaoDB implements UserDao {
 	public boolean delete(int id) {
 		return false;
 	}
-	
+
 	/**
 	 * Finds user by its id
 	 */
@@ -55,6 +59,8 @@ public class UserDaoDB implements UserDao {
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
@@ -84,12 +90,14 @@ public class UserDaoDB implements UserDao {
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
 		return users;
 	}
-	
+
 	/**
 	 * Find user by username
 	 */
@@ -108,6 +116,8 @@ public class UserDaoDB implements UserDao {
 
 			cn.close();
 		} catch (SQLException e) {
+			logger.error(e.getMessage());
+
 			e.printStackTrace();
 		}
 
