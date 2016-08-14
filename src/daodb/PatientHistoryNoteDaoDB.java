@@ -19,6 +19,12 @@ import enteties.PatientHistoryNote;
  *
  */
 public class PatientHistoryNoteDaoDB implements PatientHistoryNoteDao {
+	
+	/**
+	 * Creates a new patient history note
+	 *	@param PatientHistoryNote input patient history note object,
+	 *			 takes fields from current object
+	 */
 	public void create(PatientHistoryNote e) {
 		try (Connection cn = DaoFactoryDB.getConnection()) {
 			PreparedStatement preparedStatement = cn.prepareStatement(CREATE_PATHISTNOTE);
@@ -48,7 +54,10 @@ public class PatientHistoryNoteDaoDB implements PatientHistoryNoteDao {
 	public boolean delete(int id) {
 		return false;
 	}
-
+	
+	/**
+	 * Finds patient history note by its id
+	 */
 	public PatientHistoryNote find(int id) {
 		PatientHistoryNote patientHistoryNote = null;
 
@@ -70,7 +79,10 @@ public class PatientHistoryNoteDaoDB implements PatientHistoryNoteDao {
 
 		return patientHistoryNote;
 	}
-
+	
+	/**
+	 * Finds all patient history notes in system
+	 */
 	public List<PatientHistoryNote> findAll() {
 		List<PatientHistoryNote> patientHistoryNoteList = null;
 

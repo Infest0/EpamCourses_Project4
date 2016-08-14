@@ -1,6 +1,5 @@
 package dao;
 
-import java.sql.Date;
 import java.util.List;
 import enteties.PatientHistory;
 
@@ -20,6 +19,4 @@ public interface PatientHistoryDao extends GenericDao<PatientHistory> {
 	public void dischangeByMedic(int medicId, int historyId);
 
 	void addMedicToHistory(int medicId, int historyId);
-
-	void addPatientHistory(int patientId, String complaints, Date dateAdded);
 }

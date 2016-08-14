@@ -18,19 +18,29 @@ import enteties.Admin;
  */
 public class AdminDaoDB implements AdminDao{
 
+	/**
+	 * Creating admin is not allowed in current system
+	 */
 	public void create(Admin e) {
-		
 	}
 
+	/**
+	 * Updating admin is not allowed in current system
+	 */
 	public boolean update(Admin e) {
 		return false;
 	}
-
 	
+	/**
+	 * Deleting admin is not allowed in current system
+	 */
 	public boolean delete(int id) {
 		return false;
 	}
-
+	
+	/**
+	 * Finds admin by its id
+	 */
 	public Admin find(int id) {
 		Admin admin = null;
 
@@ -52,7 +62,10 @@ public class AdminDaoDB implements AdminDao{
 
 		return admin;
 	}
-
+	
+	/**
+	 * Finding all admins is not needed in current system realisation
+	 */
 	public List<Admin> findAll() {
 		return null;
 	}

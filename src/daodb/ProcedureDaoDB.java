@@ -17,6 +17,11 @@ import enteties.Procedure;
  *
  */
 public class ProcedureDaoDB implements ProcedureDao {
+	/**
+	 * Creates a procedure in database
+	 * @param Procedure  input procedure object,
+	 *  takes fields from current object
+	 */
 	public void create(Procedure e) {
 		try (Connection cn = DaoFactoryDB.getConnection()) {
 			PreparedStatement preparedStatement = cn.prepareStatement(CREATE_PROCEDURE);
@@ -32,7 +37,12 @@ public class ProcedureDaoDB implements ProcedureDao {
 			err.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Updates a procedure in database
+	 * @param Procedure  input procedure object,
+	 *  takes fields from current object
+	 */
 	public boolean update(Procedure e) {
 		try (Connection cn = DaoFactoryDB.getConnection()) {
 			PreparedStatement statement = cn.prepareStatement(UPDATE_PROCEDURE);
@@ -53,7 +63,10 @@ public class ProcedureDaoDB implements ProcedureDao {
 	public boolean delete(int id) {
 		return false;
 	}
-
+	
+	/**
+	 * Finds a procedure by its id
+	 */
 	public Procedure find(int id) {
 		Procedure procedure = null;
 
@@ -74,7 +87,10 @@ public class ProcedureDaoDB implements ProcedureDao {
 
 		return procedure;
 	}
-
+	
+	/**
+	 * Finds all procedures in system
+	 */
 	public List<Procedure> findAll() {
 		List<Procedure> patientHistoryNoteList = null;
 

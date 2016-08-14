@@ -12,6 +12,13 @@ import enteties.PatientHistoryNote;
  *
  */
 public class PatientHistoryNoteService {
+	
+	/**
+	 * Add new patient history note to database
+	 * @param theme history note theme string
+	 * @param text history note text string
+	 * @param patHistId history note id int
+	 */
 	public void addNewHistory(String theme, String text, int patHistId) {
 		PatientHistoryNoteDao factory = DaoFactory.getFactory().createPatientHistoryNoteDao();
 		PatientHistoryNote historyNote = new PatientHistoryNote();
@@ -21,12 +28,20 @@ public class PatientHistoryNoteService {
 		factory.create(historyNote);
 	}
 	
+	/**
+	 * Find patient history note by its id
+	 * @param id patient history note id
+	 */
 	public PatientHistoryNote find(int id) {
 		DaoFactory factory = DaoFactoryDB.getFactory();
 		PatientHistoryNoteDao patHistNote = factory.createPatientHistoryNoteDao();
 		return patHistNote.find(id);
 	}
 
+	/**
+	 * Find all patient history notes by patient history id
+	 * @param patient history id
+	 */
 	public List<PatientHistoryNote> findAllByPatientId(int id) {
 		DaoFactory dao = DaoFactory.getFactory();
 		PatientHistoryNoteDao patientHistoryNoteDao = dao.createPatientHistoryNoteDao();

@@ -9,17 +9,17 @@ public enum RoleFunctions {
 	 PATIENT(new AvailableFunctions[] {
 			AvailableFunctions.SHOW_INFO_ABOUT_ME,
 			AvailableFunctions.SHOW_PATIENT_HISTORY }), 
-	 MEDIC(  new AvailableFunctions[] { 
+	  MEDIC(  new AvailableFunctions[] { 
 	 		AvailableFunctions.SHOW_INFO_ABOUT_ME,
 			AvailableFunctions.SHOW_USER_HISTORIES, 
 			AvailableFunctions.EXECUTE_APPOINTMENT }),
-	ADMIN (  new AvailableFunctions[] { 
+	 ADMIN (  new AvailableFunctions[] { 
 			AvailableFunctions.SHOW_INFO_ABOUT_ME,
 			AvailableFunctions.SHOW_NOT_DISCHANGED_HISTORIES,
 			AvailableFunctions.ADD_PATIENT_HISTORY});
 
-	private RoleFunctions(AvailableFunctions[] roleFunctions) {
-		this.roleFunctions = roleFunctions;
+	 private RoleFunctions(AvailableFunctions[] roleFunctions) {
+	 	this.roleFunctions = roleFunctions;
 	}
 
 	 AvailableFunctions[] roleFunctions;

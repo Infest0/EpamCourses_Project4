@@ -9,6 +9,12 @@ import dao.DaoFactory;
  *
  */
 public class RuleService {
+	
+	/**
+	 * Find speciality by its string representation and returns
+	 * list of available 
+	 * @param speciality - string of speciality
+	 */
 	 public List<String> getRules(String speciality) {
 		return DaoFactory.getFactory().createRulesDaoDB().getConstraints(speciality);
 	}

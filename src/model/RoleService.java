@@ -9,6 +9,12 @@ import enteties.RoleFunctions;
  *
  */
 public class RoleService {
+	
+	/**
+	 * Checks the id, finds it in the corresponding role tables in database
+	 *  and returns available roles in system 
+	 * @param id - person id
+	 */
 	public Role defineRoles(int id) {
 		Role role = new Role();
 		

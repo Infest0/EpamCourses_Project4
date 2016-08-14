@@ -7,6 +7,9 @@ import model.LoginService;
 public class LoginHashTest {
 	
 	@Test
+	/**
+	 * Test of generating hash to person
+	 */
 	public void generateTestHashTrueReturend() {
 		String pass = "TestHash";
 		String localSalt = "abc";

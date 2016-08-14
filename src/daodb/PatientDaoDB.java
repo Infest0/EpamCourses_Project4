@@ -38,7 +38,10 @@ public class PatientDaoDB implements PatientDao {
 	public boolean delete(int id) {
 		return false;
 	}
-
+	
+	/**
+	 * Finds patient by its id
+	 */
 	public Patient find(int id) {
 		Patient patient = null;
 
@@ -60,7 +63,10 @@ public class PatientDaoDB implements PatientDao {
 
 		return patient;
 	}
-
+	
+	/**
+	 * Find all patients in database
+	 */
 	public List<Patient> findAll() {
 		List<Patient> patients = null;
 
@@ -80,6 +86,10 @@ public class PatientDaoDB implements PatientDao {
 		return patients;
 	}
 	
+	/**
+	 * Find all patients that have no history 
+	 * 	or all histories are discharged
+	 */
 	public List<Patient> findFreePatients() {
 		List<Patient> patients = null;
 

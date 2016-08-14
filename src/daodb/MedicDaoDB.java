@@ -38,7 +38,10 @@ public class MedicDaoDB implements MedicDao {
 	public boolean delete(int id) {
 		return false;
 	}
-
+	
+	/**
+	 * Finds medic by its database id
+	 */
 	public Medic find(int id) {
 		Medic medic = null;
 
@@ -59,7 +62,10 @@ public class MedicDaoDB implements MedicDao {
 
 		return medic;
 	}
-
+	
+	/**
+	 * Returns all medic in database
+	 */
 	public List<Medic> findAll() {
 		List<Medic> medics = null;
 
@@ -79,7 +85,9 @@ public class MedicDaoDB implements MedicDao {
 		return medics;
 	}
 
-	
+	/**
+	 * Finds medics by patient history id
+	 */
 	 public List<Medic> findAllByPatientHistoryId(int id) {
 		List<Medic> medics = null;
 
@@ -100,7 +108,11 @@ public class MedicDaoDB implements MedicDao {
 		return medics;
 
 	}
-
+	
+	/**
+	 * Finds all patients that are 
+	 * not assigned to patient history by its id
+	 */
 	public List<Medic> findAllNotInPatientHistoryById(int id) {
 		List<Medic> medics = null;
 
@@ -122,6 +134,9 @@ public class MedicDaoDB implements MedicDao {
 
 	}
 	
+	/**
+	 * Deletes medic from patient history medic list
+	 */
 	public void outHistoriesById(int id) {
 		try (Connection cn = DaoFactoryDB.getConnection()) {
 			PreparedStatement sql = cn.prepareStatement(DROP_MEDIC_HISTORY_BY_PATHIST_ID);

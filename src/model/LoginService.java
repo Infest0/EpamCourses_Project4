@@ -9,6 +9,7 @@ import enteties.User;
  *
  */
 public class LoginService {
+	
 	/**
 	 * Special addition salt number for increasing user password protection level
 	 */

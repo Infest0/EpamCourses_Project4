@@ -36,7 +36,10 @@ public class UserDaoDB implements UserDao {
 	public boolean delete(int id) {
 		return false;
 	}
-
+	
+	/**
+	 * Finds user by its id
+	 */
 	public User find(int id) {
 		User user = null;
 
@@ -58,6 +61,9 @@ public class UserDaoDB implements UserDao {
 		return user;
 	}
 
+	/**
+	 * Finds all users in system
+	 */
 	public List<User> findAll() {
 		List<User> users = null;
 

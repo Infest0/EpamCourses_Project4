@@ -1,7 +1,6 @@
 package model;
 
 import java.util.List;
-
 import dao.DaoFactory;
 import dao.PatientDao;
 import enteties.Patient;
@@ -13,6 +12,10 @@ import enteties.Patient;
  *
  */
 public class PatientService {
+	/**
+	 * Finds patient by its id in database  
+	 * @param id patient id
+	 */
 	public Patient find(int id) {
 		DaoFactory factory = DaoFactory.getFactory();
 		PatientDao patientDao = factory.createPatientDao();
@@ -20,6 +23,9 @@ public class PatientService {
 		return patient;
 	}
 	
+	/**
+	 * Returns all patients that have not discharged history 
+	 */
 	public List<Patient> findFreePatients() {
 		return DaoFactory.getFactory().createPatientDao().findFreePatients();
 	}

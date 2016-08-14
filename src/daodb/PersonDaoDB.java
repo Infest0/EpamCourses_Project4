@@ -36,7 +36,10 @@ public class PersonDaoDB implements PersonDao {
 	public boolean delete(int id) {
 		return false;
 	}
-
+	
+	/**
+	 * Finds person by its id in database
+	 */
 	public Person find(int id) {
 		Person person = null;
 
@@ -57,7 +60,10 @@ public class PersonDaoDB implements PersonDao {
 
 		return person;
 	}
-
+	
+	/**
+	 * Find all persons in database
+	 */
 	public List<Person> findAll() {
 		List<Person> persons = null;
 

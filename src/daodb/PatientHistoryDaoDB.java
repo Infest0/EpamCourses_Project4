@@ -3,7 +3,6 @@ package daodb;
 import static daodb.QueryHandler.*;
 import static daodb.DbNameHandler.*;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +18,13 @@ import enteties.PatientHistory;
  *
  */
 public class PatientHistoryDaoDB implements PatientHistoryDao {
+
+	/**
+	 * Creates a new patient history in system
+	 * 
+	 * @param patientHistory
+	 *            input patient history object, takes fields from current object
+	 */
 	public void create(PatientHistory patientHistory) {
 		try (Connection cn = DaoFactoryDB.getConnection()) {
 			PreparedStatement sql = cn.prepareStatement(CREATE_PATHIST);
@@ -32,6 +38,12 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 		}
 	}
 
+	/**
+	 * Updates a patient history
+	 * 
+	 * @param patientHistory
+	 *            input patient history object, takes fields from current object
+	 */
 	public boolean update(PatientHistory e) {
 		try (Connection cn = DaoFactoryDB.getConnection()) {
 			PreparedStatement sql = cn.prepareStatement(UPDATE_PATHIST);
@@ -53,6 +65,9 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 		return false;
 	}
 
+	/**
+	 * Finds patient history by its id
+	 */
 	public PatientHistory find(int id) {
 		PatientHistory patientHistory = null;
 
@@ -74,6 +89,9 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 		return patientHistory;
 	}
 
+	/**
+	 * Finds all patients in system
+	 */
 	public List<PatientHistory> findAll() {
 		List<PatientHistory> patientHistories = null;
 
@@ -128,9 +146,9 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 
 		return patientHistories;
 	}
-	
+
 	/**
-	 * 
+	 * Find all patient history that are not discharged
 	 */
 	public List<PatientHistory> findNotDischanged() {
 		List<PatientHistory> patientHistories = null;
@@ -145,6 +163,38 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 		}
 
 		return patientHistories;
+	}
+	
+	/**
+	 * Discharges the medic from patient history medic list, by medic id
+	 */
+	public void dischangeByMedic(int medicId, int historyId) {
+		try (Connection cn = DaoFactoryDB.getConnection()) {
+
+			PreparedStatement preparedStatement = cn.prepareStatement(DISCHARGE_PATIENT);
+			preparedStatement.setInt(1, medicId);
+			preparedStatement.setInt(2, historyId);
+			preparedStatement.executeUpdate();
+
+			cn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Adds medic to patient history medic list
+	 */
+	public void addMedicToHistory(int medicId, int historyId) {
+		try (Connection cn = DaoFactoryDB.getConnection()) {
+			PreparedStatement statement = cn.prepareStatement(ADD_MEDIC_TO_PATHIST);
+			statement.setInt(1, medicId);
+			statement.setInt(2, historyId);
+			statement.executeUpdate();
+			cn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void addAllToResult(ResultSet res, List<PatientHistory> patientHistories) throws SQLException {
@@ -168,18 +218,6 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 		patientHistory.setPatientId(res.getInt(PATIENT_HISTORY_PAT_ID));
 	}
 
-	public void addMedicToHistory(int medicId, int historyId) {
-		try (Connection cn = DaoFactoryDB.getConnection()) {
-			PreparedStatement statement = cn.prepareStatement(ADD_MEDIC_TO_PATHIST);
-			statement.setInt(1, medicId);
-			statement.setInt(2, historyId);
-			statement.executeUpdate();
-			cn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
 	private void UpdatePatientInitSql(PreparedStatement preparedStatement, PatientHistory patientHistory)
 			throws SQLException {
 		preparedStatement.setInt(1, patientHistory.getId());
@@ -188,25 +226,5 @@ public class PatientHistoryDaoDB implements PatientHistoryDao {
 		preparedStatement.setDate(4, patientHistory.getDateAdded());
 		preparedStatement.setDate(5, patientHistory.getDateDischanged());
 		preparedStatement.setInt(6, patientHistory.getId());
-	}
-
-	public void dischangeByMedic(int medicId, int historyId) {
-		try (Connection cn = DaoFactoryDB.getConnection()) {
-
-			PreparedStatement preparedStatement = cn.prepareStatement(DISCHARGE_PATIENT);
-			preparedStatement.setInt(1, medicId);
-			preparedStatement.setInt(2, historyId);
-			preparedStatement.executeUpdate();
-
-			cn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void addPatientHistory(int patientId, String complaints, Date dateAdded) {
-		// TODO Auto-generated method stub
-		
 	}
 }
